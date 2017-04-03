@@ -164,13 +164,13 @@ if (mysqli_num_rows($res)==1){
 if((~$OJ_LANGMASK)&(1<<$language)){
 $store_id=0;
 if(isset($_SESSION['store_id'])) $store_id=$_SESSION['store_id'];
-
+	$submit_time=strftime("%Y-%m-%d %X",time());
 	if (!isset($pid)){
 	$sql="INSERT INTO solution(problem_id,user_id,in_date,language,ip,code_length)
-		VALUES('$id','$user_id',NOW(),'$language','$ip','$len')";
+		VALUES('$id','$user_id','$submit_time','$language','$ip','$len')";
 	}else{
 	$sql="INSERT INTO solution(problem_id,user_id,in_date,language,ip,code_length,contest_id,num)
-		VALUES('$id','$user_id',NOW(),'$language','$ip','$len','$cid','$pid')";
+		VALUES('$id','$user_id','$submit_time','$language','$ip','$len','$cid','$pid')";
 	}
 	mysqli_query($mysqli,$sql);
 	$insert_id=mysqli_insert_id($mysqli);
