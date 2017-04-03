@@ -37,7 +37,7 @@
 	$height = 24;
 	/* 生成随机字符串并写入SESSION */
 	$vcode = get_rand_string($len, $vcodetype);
-	$_SESSION['vcode'] = $vcode;
+	$_SESSION['vcode'] = strtolower( $vcode);
 	header("Content-type: image/".$imgtype);
 	
 	if($imgtype != 'gif' && function_exists('imagecreatetruecolor')){
